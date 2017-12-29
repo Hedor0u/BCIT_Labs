@@ -112,6 +112,7 @@ namespace _3sem_7lab
 
         public static void Main(string[] args)
         {
+            Console.WriteLine("------------------------------------------------------------------------------------");
             foreach (var d in departments)
             {
                 var q1 = from x in workers
@@ -121,30 +122,26 @@ namespace _3sem_7lab
                 foreach (var x in q1) Console.WriteLine(x);
             }
 
-            /*var q1 = from x in workers
-                     orderby x.idDeratment, x.id
-                     select x;
-            foreach (var x in q1) Console.WriteLine(x);*/
-
+            Console.WriteLine("------------------------------------------------------------------------------------");
             Console.WriteLine("Все сотрудники, у которых фамилия начинается на Б:");
             var q2 = from x in workers
                      where (x.sername.Substring(0, 1) == "Б")
                      select x;
             foreach (var x in q2) Console.WriteLine(x);
-
+            Console.WriteLine("------------------------------------------------------------------------------------");
             Console.WriteLine("Количество сотрудников в каждом из отделов:");
             foreach (var x in departments)
             {
                 int num = workers.Count(y => y.idDeratment == x.id);
                 Console.WriteLine(x + ": " + num);
             }
-
+            Console.WriteLine("------------------------------------------------------------------------------------");
             Console.WriteLine("Отделы, в которых у всех сотрудников фамилия начинается на Б:");
             var q3 = from x in departments
                     where (workers.Count(y => y.sername.Substring(0, 1) == "Б" && y.idDeratment == x.id) == workers.Count(y => y.idDeratment == x.id))
                      select x;
             foreach (var x in q3) Console.WriteLine(x);
-
+            Console.WriteLine("------------------------------------------------------------------------------------");
             Console.WriteLine("Отделы, в которых хотя бы у одного сотрудника фамилия начинается на Б:");
 			var q4 = from x in departments
 					 where (workers.Count(y => y.sername.Substring(0, 1) == "Б" && y.idDeratment == x.id) > 0)
@@ -172,6 +169,7 @@ namespace _3sem_7lab
                 Console.WriteLine(x + ": " + q5.Count());
 				
 			}
+            Console.WriteLine("------------------------------------------------------------------------------------");
         }
     }
 }
